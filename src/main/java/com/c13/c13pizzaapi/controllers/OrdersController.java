@@ -13,16 +13,16 @@ import java.util.List;
 public class OrdersController {
 
     @Autowired
-    private OrdersService orderService;
+    private OrdersService ordersService;
 
     @PostMapping("customer/{customerId}/orders")
     public ResponseEntity<Void> createOrder(@PathVariable Long customerId, @RequestBody Orders order){
-        orderService.addOrder(customerId, order);
+        ordersService.addOrder(customerId, order);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("customer/{customerId}/orders")
-    public ResponseEntity<List<Orders>> getOrdersByCustomerId(){
-        
+    public ResponseEntity<List<Orders>> getAllOrdersById(Long customerId){
+        return new ResponseEntity<>(ordersService.getAllOrdersByCustomerId(customerId), HttpStatus.OK);
     }
 }

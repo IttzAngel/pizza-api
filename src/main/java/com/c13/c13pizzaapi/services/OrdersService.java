@@ -7,6 +7,8 @@ import com.c13.c13pizzaapi.repos.OrdersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrdersService {
 
@@ -20,5 +22,9 @@ public class OrdersService {
         Customer customer = customerRepo.findById(customerId).orElse(null);
         order.setCustomer(customer);
         ordersRepo.save(order);
+    }
+
+    public List<Orders> getAllOrdersByCustomerId(Long customerId){
+        return ordersRepo.findAllOrdersByCustomerId(customerId);
     }
 }
