@@ -33,5 +33,9 @@ public class CustomerService {
         customerRepo.deleteById(id);
     }
 
+    public Customer findCustomerByName(String name){
+        return customerRepo.findByName(name);
+    }
+
 
 }
