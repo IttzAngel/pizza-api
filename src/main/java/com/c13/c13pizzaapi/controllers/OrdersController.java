@@ -15,13 +15,13 @@ public class OrdersController {
     @Autowired
     private OrdersService ordersService;
 
-    @PostMapping("customer/{customerId}/orders")
+    @PostMapping("customers/{customerId}/orders")
     public ResponseEntity<Void> createOrder(@PathVariable Long customerId, @RequestBody Orders order){
         ordersService.addOrder(customerId, order);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("customer/{customerId}/orders")
+    @GetMapping("customers/{customerId}/orders")
     public ResponseEntity<List<Orders>> getAllOrdersById(@PathVariable Long customerId){
         return new ResponseEntity<>(ordersService.getAllOrdersByCustomerId(customerId), HttpStatus.OK);
     }
