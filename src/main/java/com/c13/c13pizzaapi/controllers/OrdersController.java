@@ -25,4 +25,16 @@ public class OrdersController {
     public ResponseEntity<List<Orders>> getAllOrdersById(@PathVariable Long customerId){
         return new ResponseEntity<>(ordersService.getAllOrdersByCustomerId(customerId), HttpStatus.OK);
     }
+
+    @PutMapping("customers/{customerId}/orders/{orderId}")
+    public ResponseEntity<Void> updateOrder(@PathVariable Long customerId, @PathVariable Long orderId, @RequestBody Orders order){
+        ordersService.updateOrder(customerId, orderId, order);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("customers/{customerId}/orders/{orderId}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable Long customerId, @PathVariable Long orderId){
+        ordersService.deleteOrder(orderId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
