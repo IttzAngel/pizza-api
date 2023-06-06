@@ -22,7 +22,7 @@ public class OrdersController {
     }
 
     @GetMapping("customer/{customerId}/orders")
-    public ResponseEntity<List<Orders>> getAllOrdersById(Long customerId){
+    public ResponseEntity<List<Orders>> getAllOrdersById(@PathVariable Long customerId){
         return new ResponseEntity<>(ordersService.getAllOrdersByCustomerId(customerId), HttpStatus.OK);
     }
 }
